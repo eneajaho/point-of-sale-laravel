@@ -23,32 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2720afaf-db5b-4553-b67b-f62a8e94622d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pos.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/pagination.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/passwords.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,8 +210,16 @@
       <option name="presentableId" value="Default" />
       <updated>1619041874252</updated>
       <workItem from="1619041876890" duration="2091000" />
-      <workItem from="1620548411990" duration="10893000" />
+      <workItem from="1620548411990" duration="11619000" />
     </task>
+    <task id="LOCAL-00001" summary="Removed files that will not be used&#10;Added authentication with Passport&#10;Added auth controller">
+      <created>1620559686108</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620559686108</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +238,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Removed files that will not be used&#10;Added authentication with Passport&#10;Added auth controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed files that will not be used&#10;Added authentication with Passport&#10;Added auth controller" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2143" y="-430" width="1089" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620556382227">
@@ -264,6 +250,10 @@
       <screen x="1920" y="-489" width="1536" height="824" />
     </state>
     <state x="2468" y="-292" key="FileChooserDialogImpl/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620556358567" />
+    <state x="2281" y="-344" key="Vcs.Push.Dialog.v2" timestamp="1620560087200">
+      <screen x="1920" y="-489" width="1536" height="824" />
+    </state>
+    <state x="2281" y="-344" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620560087200" />
     <state x="2351" y="-344" width="672" height="678" key="search.everywhere.popup" timestamp="1620557563004">
       <screen x="1920" y="-489" width="1536" height="824" />
     </state>
