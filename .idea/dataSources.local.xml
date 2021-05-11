@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="posdb@localhost" uuid="5e2ab96a-a8dc-44c7-ac23-2e1c66fbd69d">
+      <database-info product="MariaDB" version="10.4.14-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.6.0" dbms="MARIADB" exact-version="10.4.14" exact-driver-version="2.6">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>

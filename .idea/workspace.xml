@@ -19,12 +19,32 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/shifts" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2720afaf-db5b-4553-b67b-f62a8e94622d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminMiddleware.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/UserPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShiftController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShiftController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ShiftsResource.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +63,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -182,8 +207,8 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -194,6 +219,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\Side\pos\app" />
+      <recent name="D:\Dev\Side\pos\app\Http\Policies" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -210,7 +241,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619041874252</updated>
       <workItem from="1619041876890" duration="2091000" />
-      <workItem from="1620548411990" duration="11619000" />
+      <workItem from="1620548411990" duration="20011000" />
     </task>
     <task id="LOCAL-00001" summary="Removed files that will not be used&#10;Added authentication with Passport&#10;Added auth controller">
       <created>1620559686108</created>
@@ -219,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620559686108</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update README.md">
+      <created>1620560327550</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1620560327550</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +268,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/shifts" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -239,24 +289,39 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Removed files that will not be used&#10;Added authentication with Passport&#10;Added auth controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed files that will not be used&#10;Added authentication with Passport&#10;Added auth controller" />
+    <MESSAGE value="Update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2143" y="-430" width="1089" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620556382227">
-      <screen x="1920" y="-489" width="1536" height="824" />
+    <state x="223" y="59" width="1089" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620688129600">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="223" y="59" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.-489.1536.824@0.0.1536.824" timestamp="1620688129600" />
     <state x="2143" y="-430" width="1089" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620556382227" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620688214189">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.-489.1536.824@0.0.1536.824" timestamp="1620688214189" />
     <state x="2468" y="-292" key="FileChooserDialogImpl" timestamp="1620556358567">
       <screen x="1920" y="-489" width="1536" height="824" />
     </state>
     <state x="2468" y="-292" key="FileChooserDialogImpl/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620556358567" />
-    <state x="2281" y="-344" key="Vcs.Push.Dialog.v2" timestamp="1620560087200">
+    <state x="2281" y="-344" key="Vcs.Push.Dialog.v2" timestamp="1620560330595">
       <screen x="1920" y="-489" width="1536" height="824" />
     </state>
-    <state x="2281" y="-344" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620560087200" />
-    <state x="2351" y="-344" width="672" height="678" key="search.everywhere.popup" timestamp="1620557563004">
-      <screen x="1920" y="-489" width="1536" height="824" />
+    <state x="2281" y="-344" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620560330595" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620691064364">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.-489.1536.824@0.0.1536.824" timestamp="1620691064364" />
+    <state x="478" y="11" width="579" height="801" key="find.popup" timestamp="1620690889182">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="11" width="579" height="801" key="find.popup/0.0.1536.824/1920.-489.1536.824@0.0.1536.824" timestamp="1620690889182" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620594356220">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.-489.1536.824@0.0.1536.824" timestamp="1620594356220" />
     <state x="2351" y="-344" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.-489.1536.824@1920.-489.1536.824" timestamp="1620557563004" />
   </component>
 </project>

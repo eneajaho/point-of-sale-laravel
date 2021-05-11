@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-use Laravel\Passport\TokenRepository;
 
 class AuthController extends Controller
 {
@@ -30,18 +29,9 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        $token = $user->createToken('POS-TOKEN-API')->accessToken;
+//        $token = $user->createToken('POS-TOKEN-API')->accessToken;
 
         $user->save();
-
-//        $account = Account::create([
-//            'user_id' => $user->id,
-//            'name' => 'Cash',
-//            'icon' => 'fas fa-wallet',
-//            'currency' => '$',
-//            'balance' => '0',
-//            'note' => 'Cash Money',
-//        ]);
 
         return response()->json([
             'message' => 'Successfully created user!',
@@ -96,9 +86,9 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        $tokenRepo = app(TokenRepository::class);
+//        $tokenRepo = app(TokenRepository::class);
 
-        $tokenRepo->revokeAccessToken(Auth::user()->token()->id);
+//        $tokenRepo->revokeAccessToken(Auth::user()->token()->id);
 
         Auth::logout();
 
