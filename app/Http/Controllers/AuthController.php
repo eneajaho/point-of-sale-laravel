@@ -17,6 +17,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        /* TODO: this will be removed because users cannot register. They should be registered from admin*/
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
