@@ -10,7 +10,13 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'description', 'name', 'price', 'low_stock', 'optimal_stock', 'barcode'
+        'description',
+        'name',
+        'price',
+        'low_stock',
+        'optimal_stock',
+        'barcode',
+        'product_category_id'
     ];
 
     public function stock(){
