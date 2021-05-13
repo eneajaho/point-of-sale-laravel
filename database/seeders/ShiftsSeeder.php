@@ -17,8 +17,6 @@ class ShiftsSeeder extends Seeder
      */
     public function run()
     {
-        //User::factory(10)->create();
-
         DB::table('shifts')->insert([
             'name' => 'Turni 1',
             'start_time' => Carbon::now(),

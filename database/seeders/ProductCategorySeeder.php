@@ -16,9 +16,7 @@ class ProductCategorySeeder extends Seeder
      */
     public function run()
     {
-        //User::factory(10)->create();
-
-        DB::table('product_category')->insert([
+        DB::table('product_categories')->insert([
             'name' => 'Te ftohta',
             'icon' => 'sports_bar',
             'color' => 'blue'

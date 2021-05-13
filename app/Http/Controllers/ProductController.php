@@ -13,11 +13,36 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = DB::table('products')->paginate('15');
-        //dd($products);
-        //$products = Product::all()->paginate('15');
+//        $products = DB::table('products')->paginate('15');
+//        $users = DB::table('users')->skip(10)->take(5)->get();
+
+        $query = Product::with('stock', 'category')->paginate(2);
+
+//        $queryBuilder = DB::table('subscribers')->select('id', 'name', 'email');
+//        if ($request->has('search')) {
+//            $queryBuilder = $queryBuilder->Where('email', 'like', '%' . $request['search'] . '%')
+//                ->orWhere('name', 'like', '%' . $request['search'] . '%');
+//        }
+//        if ($request->has('orderby')) {
+//            $sort = $request->has('sort') ? $request['sort'] : 'asc';
+//            $queryBuilder = $queryBuilder->orderBy($request['orderby'], $sort);
+//        }
+//        $this->subscribers = $queryBuilder->paginate(20);
+////        $subscribers->cnt = $cnt;
+//
+//        if ($request->has('search')) {
+//            $this->subscribers->appends(['search' => $request['search']]);
+//        }
+//        if ($request->has('orderby')) {
+//            $this->subscribers->appends(['orderby' => $request['orderby']]);
+//            $this->subscribers->appends(['sort' => $sort]);
+//        }
+//        return view('subscriber.index', ['subscribers'=>$this->subscribers]);
+
+        $products = Product::with('category', 'stock:id,quantity,type')->paginate(2);
+//        $products = $query->get();
         return response()->json($products, 200);
     }
 

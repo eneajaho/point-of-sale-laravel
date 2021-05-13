@@ -12,8 +12,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = DB::table('users')
-            ->where('deleted', 0)
+        $users = User::where('deleted', 0)
+            ->select('id', 'name', 'email', 'role', 'created_at')
             ->get();
         return response()->json($users, 200);
     }
@@ -49,6 +49,11 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        if ($user->deleted) {
+            return response()->json([
+                'message' => 'The user has been deleted!'
+            ], 404);
+        }
         return response()->json($user, 200);
     }
 

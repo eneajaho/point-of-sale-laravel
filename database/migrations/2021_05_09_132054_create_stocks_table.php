@@ -17,13 +17,7 @@ class CreateStocksTable extends Migration
             $table->id();
             $table->float('quantity');
             $table->string('type');
-            $table->foreignId('product_id');
             $table->timestamps();
-
-            $table->foreign('product_id')
-                ->references('id')
-                ->on('products')
-                ->onDelete('cascade');
         });
     }
 

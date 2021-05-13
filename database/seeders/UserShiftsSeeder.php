@@ -16,8 +16,6 @@ class UserShiftsSeeder extends Seeder
      */
     public function run()
     {
-        //User::factory(10)->create();
-
         DB::table('user_shifts')->insert([
             'user_id' => 1,
             'shift_id' => 1

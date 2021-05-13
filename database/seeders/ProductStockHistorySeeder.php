@@ -16,14 +16,12 @@ class ProductStockHistorySeeder extends Seeder
      */
     public function run()
     {
-        //User::factory(10)->create();
-
-        DB::table('products_stock_history')->insert([
-            'before_supply' => 20,
-            'after_supply' => 40,
-            'product_id' => 1,
-            'stock_id' => 1,
-            'product_category_id' => 1
-        ]);
+//        DB::table('products_stock_history')->insert([
+//            'before_supply' => 20,
+//            'after_supply' => 40,
+//            'product_id' => 1,
+//            'stock_id' => 1,
+//            'product_category_id' => 1
+//        ]);
     }
 }
