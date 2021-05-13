@@ -5,19 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class ProductStockHistory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'description', 'name', 'price', 'low_stock', 'optimal_stock', 'barcode'
+        'before_supply',
+        'after_supply',
+        'created_at',
+        'product_id',
+        'stock_id',
+        'product_category_id'
     ];
 
     public function stock(){
         return $this->hasOne(Stock::class);
     }
 
-    public function category(){
-        return $this->hasOne(ProductCategory::class);
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 }

@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shift extends Model
+class ProductCategory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'start_time', 'end_time'
+        'name',
+        'icon',
+        'color'
     ];
 
-
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }
