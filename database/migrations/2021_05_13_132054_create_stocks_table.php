@@ -2,10 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserShiftsTable extends Migration
+class CreateStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,20 +13,16 @@ class CreateUserShiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_shifts', function (Blueprint $table) {
+        Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('shift_id');
+            $table->float('quantity');
+            $table->string('type');
+            $table->foreignId('product_id');
             $table->timestamps();
 
-            $table->foreign('user_id')
+            $table->foreign('product_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('shift_id')
-                ->references('id')
-                ->on('shifts')
+                ->on('products')
                 ->onDelete('cascade');
         });
     }
@@ -39,6 +34,6 @@ class CreateUserShiftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_shifts');
+        Schema::dropIfExists('stocks');
     }
 }

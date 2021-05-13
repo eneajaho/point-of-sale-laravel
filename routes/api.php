@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,8 +43,5 @@ Route::middleware('auth:api')->group(function () {
 
 
     /* Products */
-    Route::get('/products', function () {
-        return response()->json(['products inside auth middleware' => 'Yes!']);
-    });
-
+    Route::get('/products', [ProductController::class, 'index']);
 });
