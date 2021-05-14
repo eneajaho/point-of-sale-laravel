@@ -41,7 +41,7 @@ class ProductController extends Controller
 //        }
 //        return view('subscriber.index', ['subscribers'=>$this->subscribers]);
 
-        $products = Product::with('category', 'stock:id,quantity,type')->paginate(2);
+        $products = Product::with('category', 'stock')->paginate(2);
 //        $products = $query->get();
         return response()->json($products, 200);
     }

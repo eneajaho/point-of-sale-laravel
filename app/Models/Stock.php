@@ -12,10 +12,6 @@ class Stock extends Model
     protected $fillable = [
         'quantity',
         'type',
-        'product_id'
     ];
 
-    public function product(){
-        return $this->belongsTo(Product::class);
-    }
 }
