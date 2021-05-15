@@ -17,6 +17,7 @@ class CreateStocksTable extends Migration
             $table->id();
             $table->float('quantity');
             $table->string('type');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
         });
     }

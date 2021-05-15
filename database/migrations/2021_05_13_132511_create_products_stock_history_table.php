@@ -19,7 +19,7 @@ class CreateProductsStockHistoryTable extends Migration
             $table->float('after_supply');
             $table->foreignId('product_id');
             $table->foreignId('stock_id');
-            $table->foreignId('product_category_id');
+            $table->foreignId('category_id');
             $table->timestamps();
 
             $table->foreign('product_id')
@@ -32,9 +32,9 @@ class CreateProductsStockHistoryTable extends Migration
                 ->on('stocks')
                 ->onDelete('cascade');
 
-            $table->foreign('product_category_id')
+            $table->foreign('category_id')
                 ->references('id')
-                ->on('product_categories')
+                ->on('categories')
                 ->onDelete('cascade');
         });
     }

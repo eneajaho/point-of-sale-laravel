@@ -18,7 +18,8 @@ class ProductController extends Controller
 //        $products = DB::table('products')->paginate('15');
 //        $users = DB::table('users')->skip(10)->take(5)->get();
 
-        $query = Product::with('stock', 'category')->paginate(2);
+        $query = Product::with('stock', 'category');
+
 
 //        $queryBuilder = DB::table('subscribers')->select('id', 'name', 'email');
 //        if ($request->has('search')) {
@@ -41,8 +42,8 @@ class ProductController extends Controller
 //        }
 //        return view('subscriber.index', ['subscribers'=>$this->subscribers]);
 
-        $products = Product::with('category', 'stock')->paginate(2);
-//        $products = $query->get();
+//        $products = Product::with('category', 'stock')->paginate(2);
+        $products = $query->simplePaginate($request->pageSize ?? 5);
         return response()->json($products, 200);
     }
 

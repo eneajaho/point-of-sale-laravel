@@ -20,18 +20,12 @@ class CreateProductsTable extends Migration
             $table->integer('low_stock');
             $table->integer('optimal_stock');
             $table->string('barcode');
-            $table->foreignId('stock_id');
-            $table->foreignId('product_category_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
-            $table->foreign('product_category_id')
+            $table->foreign('category_id')
                 ->references('id')
-                ->on('product_categories')
-                ->onDelete('cascade');
-
-            $table->foreign('stock_id')
-                ->references('id')
-                ->on('stocks')
+                ->on('categories')
                 ->onDelete('cascade');
         });
     }

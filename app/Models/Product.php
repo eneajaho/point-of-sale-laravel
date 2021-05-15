@@ -16,15 +16,14 @@ class Product extends Model
         'low_stock',
         'optimal_stock',
         'barcode',
-        'stock_id',
-        'product_category_id'
+        'category_id'
     ];
 
     public function stock(){
-        return $this->hasOne(Stock::class, 'id');
+        return $this->hasOne(Stock::class);
     }
 
     public function category(){
-        return $this->belongsTo(ProductCategory::class, 'id');
+        return $this->belongsTo(Category::class);
     }
 }

@@ -21,8 +21,7 @@ class ProductSeeder extends Seeder
             'low_stock' => 15,
             'optimal_stock' => 100,
             'barcode' => '8472942',
-            'product_category_id' => 1,
-            'stock_id' => 1
+            'category_id' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -31,8 +30,7 @@ class ProductSeeder extends Seeder
             'low_stock' => 15,
             'optimal_stock' => 100,
             'barcode' => '8472942',
-            'product_category_id' => 1,
-            'stock_id' => 2
+            'category_id' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -41,8 +39,7 @@ class ProductSeeder extends Seeder
             'low_stock' => 15,
             'optimal_stock' => 100,
             'barcode' => '8472942',
-            'product_category_id' => 1,
-            'stock_id' => 3
+            'category_id' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -51,8 +48,7 @@ class ProductSeeder extends Seeder
             'low_stock' => 15,
             'optimal_stock' => 100,
             'barcode' => '8472942',
-            'product_category_id' => 1,
-            'stock_id' => 4
+            'category_id' => 1,
         ]);
 
         DB::table('products')->insert([
@@ -61,8 +57,7 @@ class ProductSeeder extends Seeder
             'low_stock' => 15,
             'optimal_stock' => 100,
             'barcode' => '8472942',
-            'product_category_id' => 1,
-            'stock_id' => 5
+            'category_id' => 1,
         ]);
     }
 }
