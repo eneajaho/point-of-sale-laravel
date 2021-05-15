@@ -34,6 +34,22 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+    public function create(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'low_stock' => 'required',
+            'optimal_stock' => 'required',
+            'barcode' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $product = Product::create($data);
+        return response()->json($product, 201);
+    }
+
+
     public function show($id)
     {
         $product = Product::with(['stock', 'category:id,name'])->get();
@@ -42,36 +58,28 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+        $product->save();
+        return response()->json($product, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response()->json($product, 200);
     }
 }
