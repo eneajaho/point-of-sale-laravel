@@ -23,6 +23,10 @@ class Product extends Model
         return $this->hasOne(Stock::class);
     }
 
+    public function hasLowStock() {
+        return $this->stock()->quantity <= $this->low_stock;
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }

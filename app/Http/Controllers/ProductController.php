@@ -4,58 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function index(Request $request)
     {
-//        $products = DB::table('products')->paginate('15');
-//        $users = DB::table('users')->skip(10)->take(5)->get();
+        $query = Product::with(['stock', 'category:id,name']);
 
-        $query = Product::with('stock', 'category');
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
 
+        if ($request->has('barcode')) {
+            $query->where('barcode', 'like', '%' . $request->barcode . '%');
+        }
 
-//        $queryBuilder = DB::table('subscribers')->select('id', 'name', 'email');
-//        if ($request->has('search')) {
-//            $queryBuilder = $queryBuilder->Where('email', 'like', '%' . $request['search'] . '%')
-//                ->orWhere('name', 'like', '%' . $request['search'] . '%');
-//        }
-//        if ($request->has('orderby')) {
-//            $sort = $request->has('sort') ? $request['sort'] : 'asc';
-//            $queryBuilder = $queryBuilder->orderBy($request['orderby'], $sort);
-//        }
-//        $this->subscribers = $queryBuilder->paginate(20);
-////        $subscribers->cnt = $cnt;
-//
-//        if ($request->has('search')) {
-//            $this->subscribers->appends(['search' => $request['search']]);
-//        }
-//        if ($request->has('orderby')) {
-//            $this->subscribers->appends(['orderby' => $request['orderby']]);
-//            $this->subscribers->appends(['sort' => $sort]);
-//        }
-//        return view('subscriber.index', ['subscribers'=>$this->subscribers]);
+        if ($request->has('hasLowStock')) {
+            $query->whereHas('stock', function ($q) {
+                $q->whereColumn('quantity', '<=', 'products.low_stock');
+            });
+        }
 
-//        $products = Product::with('category', 'stock')->paginate(2);
+        if ($request->has('categoryId')) {
+            $query->where('category_id', $request->categoryId);
+        }
+
         $products = $query->simplePaginate($request->pageSize ?? 5);
-        return response()->json($products, 200);
+        return response()->json($products);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $product = Product::with(['stock', 'category:id,name'])->get();
+
+        return response()->json($product);
     }
 
     /**
