@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -30,7 +31,7 @@ class ProductController extends Controller
             $query->where('category_id', $request->categoryId);
         }
 
-        $products = $query->simplePaginate($request->pageSize ?? 5);
+        $products = $query->paginate($request->pageSize ?? 5);
         return response()->json($products);
     }
 
@@ -60,9 +61,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param Product $product
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(Request $request, Product $product)
     {
@@ -75,7 +76,7 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Product $product
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy(Product $product)
     {
