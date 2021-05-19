@@ -18,13 +18,13 @@ class UserSeeder extends Seeder
     {
         User::factory(10)->create();
 
-        DB::table('users')->insert([
-            'name' => 'Enea',
-            'email' => 'jahollarienea14@gmail.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('12345678'),
-            'role' => 'admin',
-            'remember_token' => Str::random(10),
-        ]);
+//        DB::table('users')->insert([
+//            'name' => 'Enea',
+//            'email' => 'jahollarienea14@gmail.com',
+//            'email_verified_at' => now(),
+//            'password' => bcrypt('12345678'),
+//            'role' => 'admin',
+//            'remember_token' => Str::random(10),
+//        ]);
     }
 }

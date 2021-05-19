@@ -50,7 +50,6 @@ class ProductController extends Controller
         return response()->json($product, 201);
     }
 
-
     public function show($id)
     {
         $product = Product::with(['stock', 'category:id,name'])->get();

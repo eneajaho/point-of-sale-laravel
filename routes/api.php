@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -20,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn() => response()->json(['doesApItWerk' => 'Yes!']));
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/adminExists', [AuthController::class, 'adminExists']);
+Route::post('/createAdmin', [AuthController::class, 'createAdmin']);
 
 Route::middleware('auth:api')->group(function () {
 
@@ -32,6 +35,13 @@ Route::middleware('auth:api')->group(function () {
         Route::patch('/users/{user}', [UserController::class, 'update']);
         Route::delete('/users/{user}', [UserController::class, 'delete']);
     });
+
+
+    /* Categories */
+    Route::get('/categories', [CategoryController::class, 'index']);
+    Route::post('/categories', [CategoryController::class, 'create']);
+    Route::patch('/categories/{category}', [CategoryController::class, 'update']);
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
 
 
     /* Shifts */

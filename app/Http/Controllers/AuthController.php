@@ -1,45 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Create user
-     *
-     * @param Request $request
-     * @return JsonResponse [string] message
-     */
-    public function register(Request $request)
-    {
-        /* TODO: this will be removed because users cannot register. They should be registered from admin*/
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
-        ]);
-
-        $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-
-//        $token = $user->createToken('POS-TOKEN-API')->accessToken;
-
-        $user->save();
-
-        return response()->json([
-            'message' => 'Successfully created user!',
-            'user' => $user
-        ], 201);
-    }
-
     /**
      * Login user and create token
      *
@@ -56,7 +27,7 @@ class AuthController extends Controller
 
         $credentials = request(['email', 'password']);
 
-        if(!Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials)) {
             return response()->json([
                 'message' => 'Cannot login with these credentials!'
             ], 404);
@@ -100,6 +71,46 @@ class AuthController extends Controller
         ]);
     }
 
+    public function adminExists()
+    {
+        $admin_exists = User::where('role', 'admin')->count() > 0;
+
+        if ($admin_exists) {
+            return response()->json(['exists' => true]);
+        } else {
+            return response()->json(['exists' => false]);
+        }
+    }
+
+    public function createAdmin(Request $request)
+    {
+        $admin_exists = User::where('role', 'admin')->count() > 0;
+
+        if ($admin_exists) {
+            return response()->json([
+                'message' => 'An Admin account exists, so you cannot create another one!'
+            ], 401);
+        }
+
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string|confirmed'
+        ]);
+
+        $user = new User([
+            'name' => 'Admin',
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'admin'
+        ]);
+
+        $user->save();
+
+        return response()->json([
+            'message' => 'Successfully created admin!'
+        ], 201);
+    }
+
     /**
      * Get the authenticated User
      *
@@ -108,6 +119,6 @@ class AuthController extends Controller
     public function details()
     {
         $user = Auth::user();
-        return response()->json(['user' => $user], 200);
+        return response()->json(['user' => $user]);
     }
 }
