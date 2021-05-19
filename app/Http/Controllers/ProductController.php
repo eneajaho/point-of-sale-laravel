@@ -52,8 +52,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::with(['stock', 'category:id,name'])->get();
-
+        $product = Product::where('id', $id)->with(['stock', 'category:id,name'])->first();
         return response()->json($product);
     }
 

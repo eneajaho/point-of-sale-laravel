@@ -118,7 +118,6 @@ class AuthController extends Controller
      */
     public function details()
     {
-        $user = Auth::user();
-        return response()->json(['user' => $user]);
+        return response()->json(Auth::user());
     }
 }

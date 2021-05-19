@@ -27,6 +27,8 @@ Route::post('/createAdmin', [AuthController::class, 'createAdmin']);
 
 Route::middleware('auth:api')->group(function () {
 
+    Route::get('/auth/user', [AuthController::class, 'details']);
+
     /* Users */
     Route::middleware('admin')->group(function () {
         Route::get('/users', [UserController::class, 'index']);
@@ -55,7 +57,7 @@ Route::middleware('auth:api')->group(function () {
     /* Products */
     Route::get('/products', [ProductController::class, 'index']);
     Route::post('/products', [ProductController::class, 'create']);
-    Route::get('/products/{product}', [ProductController::class, 'show']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
     Route::patch('/products/{product}', [ProductController::class, 'update']);
     Route::delete('/products/{product}', [ProductController::class, 'destroy']);
 
