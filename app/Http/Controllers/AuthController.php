@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -109,6 +110,32 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Successfully created admin!'
         ], 201);
+    }
+
+    public function changeName(Request $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->save();
+        return response()->json($user);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'newPassword' => 'required|string'
+        ]);
+
+        if(!Hash::check($request->oldPassword, Auth::user()->password)) {
+            return response()->json([
+                'message' => 'Old password is not correct!'
+            ], 401);
+        }
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->newPassword);
+        $user->save();
+        return response()->json($user);
     }
 
     /**

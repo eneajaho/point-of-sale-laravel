@@ -28,6 +28,8 @@ Route::post('/createAdmin', [AuthController::class, 'createAdmin']);
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/auth/user', [AuthController::class, 'details']);
+    Route::post('/auth/changeName', [AuthController::class, 'changeName']);
+    Route::post('/auth/changePassword', [AuthController::class, 'changePassword']);
 
     /* Users */
     Route::middleware('admin')->group(function () {
