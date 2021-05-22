@@ -31,7 +31,7 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials)) {
             return response()->json([
                 'message' => 'Cannot login with these credentials!'
-            ], 404);
+            ], 401);
         }
 
         $user = auth()->user();
@@ -66,6 +66,8 @@ class AuthController extends Controller
 //        $tokenRepo->revokeAccessToken(Auth::user()->token()->id);
 
         Auth::logout();
+
+        Auth::user()->token()->revoke();
 
         return response()->json([
             'message' => 'Successfully logged out!'
