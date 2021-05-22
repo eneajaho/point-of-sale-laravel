@@ -42,6 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+//    function shift
+
     function isAdmin() {
         return $this->role == 'admin';
     }

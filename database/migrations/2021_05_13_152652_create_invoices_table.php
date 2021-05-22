@@ -15,7 +15,10 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+
             $table->float('total');
             $table->boolean('is_paid');
             $table->foreignId('user_id');
