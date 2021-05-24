@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\InvoiceProducts;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,30 @@ use Illuminate\Support\Facades\Auth;
 class InvoiceController extends Controller
 {
 
-    public function index(Request $request) {
-        $invoices = Invoice::with('user', 'invoiceProducts.product')->get();
+    public function index(Request $request)
+    {
 
+        $query = Invoice::with('user', 'invoiceProducts.product');
+
+        if ($request->has('user')) {
+            $query->where('user_id', $request->user);
+        }
+
+        if ($request->has('isPaid')) {
+            $query->where('is_paid', $request->isPaid);
+        }
+
+        if ($request->has('startDate')) {
+            $startDate = Carbon::createFromFormat('d/m/Y H:i:S', $request->startDate . ' 00:01:00');
+            $query->where('created_at', '>=', $startDate);
+        }
+
+        if ($request->has('endDate')) {
+            $endDate = Carbon::createFromFormat('d/m/Y H:i:S', $request->endDate . ' 23:59:59');
+            $query->where('created_at', '<=', $endDate);
+        }
+
+        $invoices = $query->paginate($request->pageSize ?? 20);
         return response()->json($invoices);
     }
 
