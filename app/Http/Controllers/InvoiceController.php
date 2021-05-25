@@ -8,13 +8,13 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class InvoiceController extends Controller
 {
 
     public function index(Request $request)
     {
-
         $query = Invoice::with('user', 'invoiceProducts.product');
 
         if ($request->has('user')) {
@@ -26,13 +26,13 @@ class InvoiceController extends Controller
         }
 
         if ($request->has('startDate')) {
-            $startDate = Carbon::createFromFormat('d/m/Y H:i:S', $request->startDate . ' 00:01:00');
-            $query->where('created_at', '>=', $startDate);
+            $startDate = Carbon::createFromFormat('Y-m-d', $request->startDate);
+            $query->where('created_at', '>=', $startDate->startOfDay());
         }
 
         if ($request->has('endDate')) {
-            $endDate = Carbon::createFromFormat('d/m/Y H:i:S', $request->endDate . ' 23:59:59');
-            $query->where('created_at', '<=', $endDate);
+            $endDate = Carbon::createFromFormat('Y-m-d', $request->endDate);
+            $query->where('created_at', '<=', $endDate->endOfDay());
         }
 
         $invoices = $query->paginate($request->pageSize ?? 20);
