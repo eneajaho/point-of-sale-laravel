@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\InvoiceProducts;
-use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class InvoiceController extends Controller
 {
-
     public function index(Request $request)
     {
         $query = Invoice::with('user', 'invoiceProducts.product');
@@ -35,7 +32,9 @@ class InvoiceController extends Controller
             $query->where('created_at', '<=', $endDate->endOfDay());
         }
 
-        $invoices = $query->paginate($request->pageSize ?? 20);
+        $invoices = $query
+            ->orderByDesc('created_at')
+            ->paginate($request->pageSize ?? 20);
         return response()->json($invoices);
     }
 

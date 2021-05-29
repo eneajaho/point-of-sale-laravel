@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\UserController;
@@ -70,8 +71,11 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('/products/{product}', [ProductController::class, 'destroy']);
     });
 
+    /* Invoices */
     Route::get('/invoices', [InvoiceController::class, 'index']);
     Route::post('/createInvoice', [InvoiceController::class, 'create']);
 
+    /* Dashboard */
+    Route::get('/dashboard/stats', [DashboardController::class, 'index']);
 
 });

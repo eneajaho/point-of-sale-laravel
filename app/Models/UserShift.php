@@ -13,4 +13,10 @@ class UserShift extends Model
         'user_id',
         'shift_id'
     ];
+
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class)->select(['id', 'name']);
+    }
+
 }

@@ -42,17 +42,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-//    function shift
+    public function userShift()
+    {
+        return $this->hasOne(UserShift::class, 'user_id')
+            ->select(['id', 'user_id', 'shift_id']);
+    }
 
-    function isAdmin() {
+    function isAdmin()
+    {
         return $this->role == 'admin';
     }
 
-    function isManager() {
+    function isManager()
+    {
         return $this->role == 'manager';
     }
 
-    function isUser() {
+    function isUser()
+    {
         return $this->role == 'user';
     }
 
