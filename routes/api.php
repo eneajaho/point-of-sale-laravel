@@ -39,7 +39,9 @@ Route::middleware('auth:api')->group(function () {
 
     /* Products */
     Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/filter', [ProductController::class, 'filter']);
     Route::get('/products/{id}', [ProductController::class, 'show']);
+
 
     Route::middleware('admin')->group(function () {
 
@@ -73,7 +75,10 @@ Route::middleware('auth:api')->group(function () {
 
     /* Invoices */
     Route::get('/invoices', [InvoiceController::class, 'index']);
+    Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
     Route::post('/createInvoice', [InvoiceController::class, 'create']);
+    Route::post('/updateInvoice/{invoice}', [InvoiceController::class, 'update']);
+    Route::post('/invoices/{invoice}/pay', [InvoiceController::class, 'pay']);
 
     /* Dashboard */
     Route::get('/dashboard/stats', [DashboardController::class, 'index']);

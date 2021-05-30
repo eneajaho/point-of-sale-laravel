@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,24 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+    public function filter(Request $request)
+    {
+        $query = Product::with(['stock', 'category:id,name']);
+
+        if ($request->has('searchQuery')) {
+            $query
+                ->where('name', 'like', '%' . $request->searchQuery . '%')
+                ->orWhere('barcode', 'like', '%' . $request->searchQuery . '%');
+        }
+
+        if ($request->has('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        $products = $query->paginate(200);
+        return response()->json($products);
+    }
+
     public function create(Request $request)
     {
         $data = $request->validate([
@@ -47,6 +66,13 @@ class ProductController extends Controller
         ]);
 
         $product = Product::create($data);
+
+        $stock = new Stock();
+        $stock->quantity = 0;
+        $stock->type = $request->stock_type;
+        $stock->product_id = $product->id;
+        $stock->save();
+
         return response()->json($product, 201);
     }
 
