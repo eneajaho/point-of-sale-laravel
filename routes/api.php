@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\SupplyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -71,6 +72,12 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/products', [ProductController::class, 'create']);
         Route::patch('/products/{product}', [ProductController::class, 'update']);
         Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+
+        /* Supplies */
+        Route::get('/supplies', [SupplyController::class, 'index']);
+        Route::post('/supplies/create', [SupplyController::class, 'create']);
+//        Route::post('/updateInvoice/{invoice}', [InvoiceController::class, 'update']);
+//        Route::post('/invoices/{invoice}/pay', [InvoiceController::class, 'pay']);
     });
 
     /* Invoices */

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsStockHistoryTable extends Migration
+class CreateSuppliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProductsStockHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_stock_history', function (Blueprint $table) {
+        Schema::create('supplies', function (Blueprint $table) {
             $table->id();
             $table->float('before_supply');
             $table->float('after_supply');
@@ -46,6 +46,6 @@ class CreateProductsStockHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_stock_history');
+        Schema::dropIfExists('supplies');
     }
 }

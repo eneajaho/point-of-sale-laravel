@@ -5,22 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\InvoiceProducts;
 use App\Models\Product;
+use App\Models\Supply;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class InvoiceController extends Controller
+class SupplyController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Invoice::with('user', 'invoiceProducts.product');
+        $query = Supply::with(['stock', 'product']);
 
-        if ($request->has('user')) {
-            $query->where('user_id', $request->user);
+        if ($request->has('productId')) {
+            $query->where('product_id', $request->productId);
         }
 
-        if ($request->has('isPaid')) {
-            $query->where('is_paid', $request->isPaid);
+        if ($request->has('categoryId')) {
+            $query->where('category_id', $request->categoryId);
         }
 
         if ($request->has('startDate')) {
@@ -36,57 +37,35 @@ class InvoiceController extends Controller
         $invoices = $query
             ->orderByDesc('created_at')
             ->paginate($request->pageSize ?? 20);
+
         return response()->json($invoices);
     }
 
-    public function show(Invoice $invoice)
+    public function show(Supply $productStockHistory)
     {
-        $invoice->load(['invoiceProducts.product.stock', 'user']);
-        return response()->json($invoice);
+        $productStockHistory->load(['stock', 'product']);
+        return response()->json($productStockHistory);
     }
 
     public function create(Request $request)
     {
-        $invoice = new Invoice();
-        $invoice->user_id = Auth::user()->id;
-        $invoice->shift_id = Auth::user()->shift_id ?? 1;
-        $invoice->is_paid = false;
-        $invoice->total = 0;
-        $invoice->created_at = Carbon::now();
+        $product = Product::with('stock')->find($request->productId);
 
-        $invoice->save();
+        $supply = new Supply();
+        $supply->product_id = $product->id;
+        $supply->category_id = $product->category_id;
+        $supply->stock_id = $product->stock->id;
+        $supply->before_supply = $product->stock->quantity;
+        $supply->after_supply = $product->stock->quantity + $request->supplyQuantity;
 
-        $items = array();
-        $totalPrice = 0;
+        $supply->created_at = Carbon::now();
 
-        foreach ($request->items as $item) {
-            $invoiceItem = new InvoiceProducts();
+        $product->stock->quantity = $supply->after_supply;
 
-            $invoiceItem->quantity = $item['quantity'];
-            $invoiceItem->price = $item['price'];
-            $invoiceItem->total = $item['price'] * $item['quantity'];
-            $invoiceItem->product_id = $item['product_id'];
-            $invoiceItem->invoice_id = $invoice->id;
+        $supply->save();
+        $product->stock->save();
 
-            $totalPrice += $item['price'] * $item['quantity'];
-
-            $invoiceItem->save();
-
-            // decrease stock
-            $product = Product::with('stock')->find($item['product_id']);
-            $product->stock->quantity -= $item['quantity'];
-            $product->stock->save();
-
-            array_push($items, $invoiceItem);
-        }
-
-        $invoice->total = $totalPrice;
-        $invoice->save();
-
-        return response()->json([
-            'invoice' => $invoice,
-            'items' => $items
-        ]);
+        return response()->json($supply);
     }
 
     public function update(Request $request, Invoice $invoice)
