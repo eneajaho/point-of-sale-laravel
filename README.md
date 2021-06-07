@@ -8,10 +8,15 @@ php artisan key:generate
 ```
 - Migrate to database
 ```code
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 ```
 - Install passport
 ```code
 php artisan passport:install
 php artisan passport:keys
+```
+
+- Link storage
+```code
+php artisan storage:link
 ```

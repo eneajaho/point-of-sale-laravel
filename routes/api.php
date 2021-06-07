@@ -43,13 +43,14 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/products/filter', [ProductController::class, 'filter']);
     Route::get('/products/{id}', [ProductController::class, 'show']);
 
+    Route::get('/users/{user}', [UserController::class, 'show']);
+    Route::post('/users/{user}/setPhoto', [UserController::class, 'setPhoto']);
 
     Route::middleware('admin')->group(function () {
 
         /* Users */
         Route::get('/users', [UserController::class, 'index']);
         Route::post('/users', [UserController::class, 'create']);
-        Route::get('/users/{user}', [UserController::class, 'show']);
         Route::patch('/users/{user}', [UserController::class, 'update']);
         Route::delete('/users/{user}', [UserController::class, 'delete']);
 

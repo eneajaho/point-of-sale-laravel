@@ -75,6 +75,15 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function setPhoto(Request $request, User $user)
+    {
+        $path = $request->file('photo')->store('avatars', 'public');
+        $user->photo = 'storage/' . $path;
+        $user->save();
+
+        return response()->json(['url' =>$user->photo]);
+    }
+
     public function delete(User $user)
     {
         $user->deleted = true;

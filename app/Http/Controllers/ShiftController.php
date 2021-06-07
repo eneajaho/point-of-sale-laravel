@@ -11,7 +11,7 @@ class ShiftController extends Controller
     public function index()
     {
         $shifts = Shift::all();
-        return response()->json($shifts, 200);
+        return response()->json($shifts);
     }
 
     public function create(Request $request)
@@ -28,19 +28,19 @@ class ShiftController extends Controller
 
     public function show(Shift $shift)
     {
-        return response()->json($shift, 200);
+        return response()->json($shift);
     }
 
     public function update(Request $request, Shift $shift)
     {
         $shift->update($request->all());
         $shift->save();
-        return response()->json($shift, 200);
+        return response()->json($shift);
     }
 
     public function destroy(Shift $shift)
     {
         $shift->delete();
-        return response()->json($shift, 200);
+        return response()->json($shift);
     }
 }
