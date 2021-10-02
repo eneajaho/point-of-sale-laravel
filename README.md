@@ -20,3 +20,6 @@ php artisan passport:keys
 ```code
 php artisan storage:link
 ```
+
+## UI Angular app
+Find the frontend code here: [Point of sale Angular](https://github.com/eneajaho/point-of-sale-angular)
